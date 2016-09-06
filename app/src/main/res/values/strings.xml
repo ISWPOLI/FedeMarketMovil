@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- STRING CONF -->
+    <string name="app_name">FedeMarket</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- PANTALLA LOGIN -->
+    <string name="nombre_usuario">Nombre de Usuario</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="olvido_contra">¿Olvido su contraseña?</string>
+    <string name="recordar_contra">Recordar contraseña</string>
+    <!-- Color del texto "Recordar Contraseña" -->
+    <color name="color_text_login">#fdb103</color>
+    <!-- Color de la letra del "Nombre de Usuario" y "Contraseña" -->
+    <color name="color_text_login_pass">#ca5b02</color>
+
+</resources>

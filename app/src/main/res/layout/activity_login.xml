@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="qantica.com.fedemarket.Login">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/backgroud_login_2"
+        android:orientation="vertical" >
+
+        <!-- Layout superior -->
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:orientation="horizontal" >
+
+            <!-- Layout izquierdo -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.27"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <!-- Layout que contiene el formulario de login -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.34"
+                android:orientation="vertical" >
+
+                <!-- Layout superior del formulario login -->
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <!-- Layout del formulario -->
+
+                <LinearLayout
+                    android:id="@+id/linearLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        style="@style/StyleLetter"
+                        android:text="@string/nombre_usuario"/>
+
+                    <EditText
+                        android:id="@+id/nombreUsuario"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="#f2f2f2"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textCursorDrawable="@null" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/contrasena"
+                        style="@style/StyleLetter"/>
+
+                    <EditText
+                        android:id="@+id/contrasena"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="#f2f2f2"
+                        android:inputType="textPassword"
+                        android:lines="1"
+                        android:textColor="#000000"
+                        android:textCursorDrawable="@null" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <!--
+                        Layout que contiene el checkbox para recordar la contraseña
+                        y el botón para iniciar la sesión
+
+                    -->
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal" >
+
+                        <!-- Layout que contiene el checkbox -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.42" >
+
+                            <CheckBox
+                                android:id="@+id/checkBox1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="@string/recordar_contra"
+                                android:textColor="@color/color_text_login_pass"
+                                style="@style/StyleLetterCheckBox"
+                                android:checked="false" />
+                        </LinearLayout>
+
+                        <!-- Layout para separar el botón del recordar contraseña -->
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayoutCenterPass"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.16" >
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="  "/>
+                        </LinearLayout>
+
+                        <!-- Layout que contiene el botón de iniciar sesión -->
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.42"
+                            android:orientation="vertical" >
+
+                            <!-- Layout que ajusta el botón arriba -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.37" >
+                            </LinearLayout>
+
+                            <!-- Layout que contiene el botón -->
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.26"
+                                android:orientation="horizontal" >
+
+                                <!-- Layout que ajusta e botón a la izquierda -->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7" >
+                                </LinearLayout>
+
+                                <ImageButton
+                                    android:id="@+id/botIniciarSesion"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/btn_iniciar_sesion" />
+
+                                <!-- Layout que ajusta el botón a la derecha -->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.2" >
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Layout que ajusta el botón abajo -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.37" >
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical" >
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+
+                    -->
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.54"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Layout inferior -->
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
