@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BackGroundInicio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Layout principal -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.43" >
+
+        <!-- Layout izquierdo -->
+
+        <LinearLayout
+            android:id="@+id/LayoutIzquierdo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.7"
+            android:gravity="bottom"
+            android:orientation="vertical" >
+
+            <!-- Layout Padre que contiene el nombre y el "Cierre de sesión" -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout13"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.85"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/label_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:text="@string/welcome"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#330000"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_cerrar_sesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00ffffff"
+                    android:gravity="center|left"
+                    android:text="@string/label_cerrar_sesion"
+                    android:textColor="#CA5C05"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Layout Padre que contiene el logo de la tienda -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_logo_2" />
+            </LinearLayout>
+
+            <!-- Layout que separa el logo del top de descargas -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.999" >
+            </LinearLayout>
+
+            <!-- Layout que contiene el top de descargas -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.4"
+                android:background="@drawable/backgroud_destacados"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout14"
+                    android:layout_width="fill_parent"
+                    android:layout_height="17dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0.05"
+                        android:gravity="center"
+                        android:text="@string/lbl_top_descargas"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:typeface="sans" />
+
+                    <Button
+                        android:id="@+id/btn_ver_todos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right|top"
+                        android:layout_weight="0.1"
+                        android:alpha="1"
+                        android:background="#00ffffff"
+                        android:text="@string/label_ver_todos"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#f0aa0a"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ScrollView
+                    android:id="@+id/scrollView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fadeScrollbars="true" >
+
+                    <LinearLayout
+                        android:id="@+id/layout_destacados"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Layout derecho -->
+
+        <LinearLayout
+            android:id="@+id/LayoutDerecho"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.3"
+            android:gravity="top"
+            android:orientation="vertical" >
+
+            <!-- Layout Padre para el buscar -->
+
+            <LinearLayout
+                android:id="@+id/LayoutIndicadoresBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.61"
+                android:orientation="vertical" >
+
+                <!-- Layout que contiene la barra de búsqueda y el botón -->
+
+                <LinearLayout
+                    android:id="@+id/LayoutBuscar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.27"
+                    android:orientation="horizontal" >
+
+                    <!-- Alinea el texto "Buscar" hacia la izquierda -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.35" >
+                    </LinearLayout>
+
+                    <!-- TextView "Buscar" -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.26"
+                        android:background="@drawable/img_busqueda" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.59" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.9" >
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.1"
+                                android:gravity="center|left"
+                                android:text="@string/lbl_buscar"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:typeface="sans" />
+                        </LinearLayout>
+
+                        <!-- EditText para ingresar la búsqueda -->
+
+                        <EditText
+                            android:id="@+id/texto_busqueda"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.41"
+                            android:background="#00000000"
+                            android:gravity="center|left"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="#330000"
+                            android:textCursorDrawable="@null"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Layout que separa la barra de búsqueda al botón -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.56" >
+                    </LinearLayout>
+
+                    <!-- Layout que contiene el botón "Buscar" -->
+
+                    <LinearLayout
+                        android:id="@+id/linearLayou17"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="0.54" >
+
+                        <ImageButton
+                            android:id="@+id/btn_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|top"
+                            android:background="@drawable/btn_buscar" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Layout para separar la barra de búsqueda de las noticias -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.63" >
+            </LinearLayout>
+
+            <!-- Layout para mostrar las noticias -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:background="@drawable/im_banner_inicio_2"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.47" >
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/myfivepanelpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.06" >
+                    </android.support.v4.view.ViewPager>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.47" >
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8" >
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Layout para listar las categorias -->
+
+            <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/label_categorias"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#343434"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- <HorizontalScrollView
+                        android:id="@+id/horizontal_cat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" > -->
+
+                    <GridView
+                        android:id="@+id/list_categoria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnWidth="100dp"
+                        android:numColumns="3"
+                        android:scrollbars="horizontal" >
+                    </GridView>
+                    <!-- </HorizontalScrollView> -->
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
