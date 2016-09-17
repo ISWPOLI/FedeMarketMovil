@@ -15,4 +15,28 @@
     <!-- Color de la letra del "Nombre de Usuario" y "Contraseña" -->
     <color name="color_text_login_pass">#ca5b02</color>
 
+    <string name="tab_noticias">Noticias</string>
+    <string name="tab_aplicaciones">Aplicaciones</string>
+    <string name="tab_imagenes">Imagenes</string>
+    <string name="tab_videos">Videos</string>
+    <string name="tab_juegos">Juegos</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="label_valoracion">"VALORACIÓN:  "</string>
+    <string name="label_descargas">1200 Descargas</string>
+    <string name="label_descripcion">Descripción</string>
+    <string name="label_categorias">Categorías</string>
+    <string name="label_cerrar_sesion">Cerrar Sesión</string>
+    <string name="label_ver_todos">Ver Todo</string>
+    <string name="lbl_comenta">Comenta esta APP:</string>
+    <string name="lbl_calificacion">"Haz tu valoración: "</string>
+    <string name="lbl_comentarios">OTROS COMENTARIOS</string>
+    <string name="lbl_captura">Muestra de Aplicación</string>
+    <string name="lbl_top_descargas">Top Descargas</string>
+    <string name="lbl_categorias">Categorias</string>
+    <string name="lbl_buscar">Buscar:</string>
+    <string name="lbl_indicadores">Indicadores:</string>
+    <string name="mis_apps">Mis Apps</string>
+    <string name="welcome">Bienvenido, Francisco Díaz</string>
+    <string name="lbl_busqueda">Búsqueda</string>
+
 </resources>
