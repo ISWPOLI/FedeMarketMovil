@@ -47,9 +47,9 @@
                 <Button
                     android:id="@+id/btn_cerrar_sesion"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="#00ffffff"
-                    android:gravity="center|left"
+                    android:gravity="top|left"
                     android:text="@string/label_cerrar_sesion"
                     android:textColor="#CA5C05"
                     android:textSize="12sp" />

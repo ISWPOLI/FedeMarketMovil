@@ -131,7 +131,7 @@ public class Conexion {
         } catch (Exception e) {
             e.printStackTrace();
             Singleton.setEstado(false);
-            Log.w("QANTICAMARKET", "Error en el listado de categorias");
+            Log.w("Conexion.java", "Error en el listado de categorias");
         }
     }
 

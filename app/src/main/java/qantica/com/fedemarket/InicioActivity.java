@@ -40,6 +40,10 @@ import java.util.ArrayList;
 import qantica.com.controles.CategoriaAdapterIndex;
 import qantica.com.controles.LoaderIconCategoria;
 
+/**
+ * @author Juan Rubiano
+ * 16/11/2016
+ */
 public class InicioActivity extends Activity implements	ViewPager.OnPageChangeListener, View.OnClickListener {
 
     public static ArrayList<Contenido> destacados = Singleton.getInstancia().getRecomendados();
@@ -78,7 +82,6 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
 
         adapter = new AnimacionAdapter(InicioActivity.this);
 
-        //Panel para las noticias
         myPager = (ViewPager) findViewById(R.id.myfivepanelpager);
         myPager.setAdapter(adapter);
         myPager.setCurrentItem(0);
@@ -111,6 +114,7 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
 
         setDestacados();
         start();
+
         SingletonActividad.getInstancia().getActividades().add(this);
 
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

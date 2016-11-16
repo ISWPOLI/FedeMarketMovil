@@ -199,9 +199,8 @@ public class Ejecucion {
     }
 
     /**
-     * metodo encargado de listar y actualizar las subcategorias
-     *
-     * @return
+     * Método encargado de listar y actualizar las subcategorias
+     * @return ArrayList con las subcategorias
      * @throws Exception
      */
     public static ArrayList<SubCategoria> executeListSubCategoria(

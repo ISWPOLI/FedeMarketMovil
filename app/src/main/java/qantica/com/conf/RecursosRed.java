@@ -3,8 +3,6 @@ package qantica.com.conf;
 /**
  * @author Juan Rubiano
  * 15/09/16
- * Q-antica Ltda.
- * Colombia
  */
 public class RecursosRed {
 

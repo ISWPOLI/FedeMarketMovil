@@ -218,7 +218,7 @@ public class Login extends Activity implements View.OnClickListener {
                                 paramNoticias.add(new BasicNameValuePair("rol", Singleton.getInstancia().getRol()));
                                 Conexion.listarNoticias(paramNoticias);
                                 Conexion.listarCategorias(Login.this, paramNoticias);
-                                Conexion.listarSubCategorias(Login.this, paramNoticias);
+                                //Conexion.listarSubCategorias(Login.this, paramNoticias);
                                //Singleton.getInstancia().setRecomendados(Conexion.buscarDestacados());
                                 //Conexion.buscarGaleria(Login.this);
                                 Intent intent = new Intent(Login.this,InicioActivity.class);
