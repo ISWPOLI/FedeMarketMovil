@@ -25,25 +25,25 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.qantica.animacion.AnimacionAdapter;
-import com.qantica.conexion.Conexion;
-import com.qantica.conf.IdActividades;
-import com.qantica.conf.RecursosRed;
-import com.qantica.mundo.Categoria;
-import com.qantica.mundo.Contenido;
+import qantica.com.animacion.AnimacionAdapter;
+import qantica.com.conexion.Conexion;
+import qantica.com.conf.IdActividades;
+import qantica.com.conf.RecursosRed;
+import qantica.com.mundo.Categoria;
+import qantica.com.mundo.Contenido;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 
-import controles.CategoriaAdapterIndex;
-import controles.LoaderIconCategoria;
+import qantica.com.controles.CategoriaAdapterIndex;
+import qantica.com.controles.LoaderIconCategoria;
 
 public class InicioActivity extends Activity implements	ViewPager.OnPageChangeListener, View.OnClickListener {
 
-    public static ArrayList<Contenido> destacados = Singleton.getRecomendados();
-    public static ArrayList<Categoria> categorias = Singleton.getCategorias();
+    public static ArrayList<Contenido> destacados = Singleton.getInstancia().getRecomendados();
+    public static ArrayList<Categoria> categorias = Singleton.getInstancia().getCategorias();
 
     private TextView lbl_nombre;
     private EditText txtBusqueda;
@@ -85,8 +85,6 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
 
         //Llena el GridView con las categorias
         try {
-            //hsv.addView(gvc);
-
             gvc.setAdapter(new CategoriaAdapterIndex(this, categorias));
         } catch (Exception e) {
             Log.e("InicioActivity", "Categorias vacias");
@@ -95,7 +93,6 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
         //Listener para las categorias
         gvc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Singleton.limpiarSubcategoria();
                 String idItem = categorias.get(position).getId();
 
                 //Lista las subcategorias asociadas a la categoria que se le dio click
@@ -114,7 +111,7 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
 
         setDestacados();
         start();
-        SingletonActividad.getActividades().add(this);
+        SingletonActividad.getInstancia().getActividades().add(this);
 
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(txtBusqueda.getWindowToken(),0);
@@ -128,7 +125,7 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
         btnBuscar = (ImageButton) findViewById(R.id.btn_search);
         lbl_nombre = (TextView) findViewById(R.id.label_nombre);
 
-        lbl_nombre.setText("Bienvenido, " + Singleton.getUname());
+        lbl_nombre.setText("Bienvenido, " + Singleton.getInstancia().getUname());
         gvc = (GridView) findViewById(R.id.list_categoria);
         //hsv = (HorizontalScrollView)findViewById(R.id.horizontal_cat);
     }
@@ -143,8 +140,8 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
         t = new Thread() {
             public void run() {
                 try {
-                    myPager.setOnPageChangeListener(InicioActivity.this);
-                    while (Singleton.isAnimacion()) {
+                    myPager.addOnPageChangeListener(InicioActivity.this);
+                    while (Singleton.getInstancia().isAnimacion()) {
                         Thread.sleep(7000);
                         contador++;
                         if (contador == 5) {
@@ -234,10 +231,10 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            Singleton.limpiar();
-            Singleton.setAnimacion(false);
-            ArrayList<Activity> actividades = SingletonActividad.getActividades();
-            SingletonActividad.setActividades(new ArrayList<Activity>());
+            Singleton.getInstancia().limpiar();
+            Singleton.getInstancia().setAnimacion(false);
+            ArrayList<Activity> actividades = SingletonActividad.getInstancia().getActividades();
+            SingletonActividad.getInstancia().setActividades(new ArrayList<Activity>());
             for (int i = 0; i < actividades.size(); i++) {
                 actividades.get(i).finish();
             }

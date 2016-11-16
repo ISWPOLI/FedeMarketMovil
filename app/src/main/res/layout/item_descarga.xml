@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GridItem"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp" >
+
+        <LinearLayout
+            android:id="@+id/LayoutIzquierdo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7" >
+
+            <AbsoluteLayout
+                android:id="@+id/AbsoluteLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/ico_contenido_descarga"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/descarga_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_x="57dp"
+                    android:layout_y="2dp"
+                    android:src="@drawable/ico_update" />
+            </AbsoluteLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LayoutDerecho"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.3" >
+
+            <TextView
+                android:id="@+id/descarga_item_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:text="Almendra Sana"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#CA5C05"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/descarga_item_descarga"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.35"
+                android:text="Descripción"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#56382B"
+                android:textSize="15sp" />
+
+            <RatingBar
+                android:id="@+id/descarga_rating_galeria"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:layout_marginTop="5dp"
+                android:numStars="5"
+                android:progressDrawable="@drawable/food_ratingbar_small"
+                android:rating="3"
+                android:stepSize="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
