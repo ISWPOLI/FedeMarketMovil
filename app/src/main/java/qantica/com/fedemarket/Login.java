@@ -11,17 +11,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,9 +25,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qantica.conexion.Conexion;
-import com.qantica.conf.Mensaje;
-import com.qantica.conf.RecursosRed;
+import qantica.com.conexion.Conexion;
+import qantica.com.conf.Mensaje;
+import qantica.com.conf.RecursosRed;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -41,7 +35,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.io.File;
 import java.util.ArrayList;
 
-import controles.DialogoPopUp;
+import qantica.com.controles.DialogoPopUp;
 
 public class Login extends Activity implements View.OnClickListener {
 
@@ -76,7 +70,7 @@ public class Login extends Activity implements View.OnClickListener {
         }
 
         crearCarpeta();
-        Singleton.setAnimacion(true);
+        Singleton.getInstancia().setAnimacion(true);
 
         if (!networkAvailable()) {
             mostrarDialogo(Mensaje.MSJ_NO_INTERNET);
@@ -84,7 +78,7 @@ public class Login extends Activity implements View.OnClickListener {
 
         setControles();
         setListeners();
-        SingletonActividad.getActividades().add(this);
+        SingletonActividad.getInstancia().getActividades().add(this);
     }
 
     /**
@@ -170,10 +164,10 @@ public class Login extends Activity implements View.OnClickListener {
      */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            Singleton.limpiar();
-            Singleton.setAnimacion(false);
+            Singleton.getInstancia().limpiar();
+            Singleton.getInstancia().setAnimacion(false);
             ArrayList<Activity> actividades = SingletonActividad.getActividades();
-            SingletonActividad.setActividades(new ArrayList<Activity>());
+            SingletonActividad.getInstancia().setActividades(new ArrayList<Activity>());
             for (int i = 0; i < actividades.size(); i++) {
                 actividades.get(i).finish();
             }
@@ -210,28 +204,28 @@ public class Login extends Activity implements View.OnClickListener {
             dialog.show();
 
             contador = 1;
-            if (Singleton.isEstado()) {
+            if (Singleton.getInstancia().isEstado()) {
                 new Thread(new Runnable() {
                     public void run() {
                         try{
-                            Singleton.limpiar();
+                            Singleton.getInstancia().limpiar();
                             ArrayList<NameValuePair> paramLogin = new ArrayList<NameValuePair>();
                             ArrayList<NameValuePair> paramNoticias = new ArrayList<NameValuePair>();
                             paramLogin.add(new BasicNameValuePair("nombre_usuario",nombreUsuario.getText().toString()));
                             paramLogin.add(new BasicNameValuePair("contrasena",contrasena.getText().toString()));
                             Log.e("QANTICAMARKET", "Se intentará conectar a: "+ RecursosRed.DOMINIO);
                             if (Conexion.verificarLogin(paramLogin)) {
-                                paramNoticias.add(new BasicNameValuePair("rol", Singleton.getRol()));
+                                paramNoticias.add(new BasicNameValuePair("rol", Singleton.getInstancia().getRol()));
                                 Conexion.listarNoticias(paramNoticias);
                                 Conexion.listarCategorias(Login.this, paramNoticias);
-                                Conexion.listarSubCategorias(Login.this, paramNoticias);
-                                Singleton.setRecomendados(Conexion.buscarDestacados());
-                                Conexion.buscarGaleria(Login.this);
+                                //Conexion.listarSubCategorias(Login.this, paramNoticias);
+                               //Singleton.getInstancia().setRecomendados(Conexion.buscarDestacados());
+                                //Conexion.buscarGaleria(Login.this);
                                 Intent intent = new Intent(Login.this,InicioActivity.class);
-                                Toast toast = Toast.makeText(Login.this,"Entro", Toast.LENGTH_LONG);
-                                toast.show();
+                                //Toast toast = Toast.makeText(Login.this,"Entro", Toast.LENGTH_LONG);
+                                //toast.show();
 
-                                if(!Singleton.isEstado()){
+                                if(!Singleton.getInstancia().isEstado()){
                                     registrado = false;
                                 }else{
                                     startActivity(intent);
@@ -260,10 +254,10 @@ public class Login extends Activity implements View.OnClickListener {
     final Runnable cambiarAnimacion = new Runnable() {
         public void run() {
             if (!registrado) {
-                if(!Singleton.isEstado()){
+                if(!Singleton.getInstancia().isEstado()){
                     DialogoPopUp dialogoPopUp = new DialogoPopUp(Login.this,"!Singleton.isEstado()");
                     dialogoPopUp.show();
-                }else if (Singleton.getUname().equals("NoServer")) {
+                }else if (Singleton.getInstancia().getUname().equals("NoServer")) {
                     Toast toast = new Toast(getApplicationContext());
                     LayoutInflater inflater = getLayoutInflater();
                     View layout = inflater.inflate(R.layout.toast, (ViewGroup) findViewById(R.id.lytLayout));

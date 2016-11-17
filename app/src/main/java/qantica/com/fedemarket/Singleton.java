@@ -1,21 +1,16 @@
 package qantica.com.fedemarket;
 
-import com.qantica.mundo.Categoria;
-import com.qantica.mundo.Comentario;
-import com.qantica.mundo.Contenido;
-import com.qantica.mundo.Noticia;
-import com.qantica.mundo.SubCategoria;
+import qantica.com.mundo.Categoria;
+import qantica.com.mundo.Comentario;
+import qantica.com.mundo.Contenido;
+import qantica.com.mundo.Noticia;
+import qantica.com.mundo.SubCategoria;
 
 import java.util.ArrayList;
 
-
-
-/**
- *
- * @author Juan Rubiano
- *
- */
 public class Singleton {
+
+    private static final Singleton INSTANCIA = new Singleton();
 
     //Id del usuario
     private static String uid = "101010";
@@ -75,6 +70,10 @@ public class Singleton {
     private static ArrayList<Object> resultados = new ArrayList<Object>();
 
     private Singleton() {
+    }
+
+    public static Singleton getInstancia() {
+        return INSTANCIA;
     }
 
     public static void limpiar() {

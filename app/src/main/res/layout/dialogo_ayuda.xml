@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="500dp"
+    android:layout_height="530dp"
+    android:orientation="vertical" android:background="@drawable/backgroud" android:layout_gravity="center">
+
+    <ImageButton
+        android:id="@+id/btn_cerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:src="@drawable/fedecafe_full_filled" />
+
+    <VideoView
+        android:id="@+id/video_ayuda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_margin="20dp"/>
+
+</LinearLayout>

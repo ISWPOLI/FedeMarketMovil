@@ -11,9 +11,15 @@ import android.app.Activity;
  */
 public class SingletonActividad {
 
+    private static final SingletonActividad INSTANCIA = new SingletonActividad();
+
     private static ArrayList<Activity> actividades = new ArrayList<Activity>();
 
     private SingletonActividad(){}
+
+    public static SingletonActividad getInstancia(){
+        return INSTANCIA;
+    }
 
     public static ArrayList<Activity> getActividades() {
         return actividades;

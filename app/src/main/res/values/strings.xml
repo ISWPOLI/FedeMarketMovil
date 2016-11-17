@@ -11,9 +11,9 @@
     <string name="olvido_contra">¿Olvido su contraseña?</string>
     <string name="recordar_contra">Recordar contraseña</string>
     <!-- Color del texto "Recordar Contraseña" -->
-    <color name="color_text_login">#fdb103</color>
+    <color name="color_text_login">#9B0329</color>
     <!-- Color de la letra del "Nombre de Usuario" y "Contraseña" -->
-    <color name="color_text_login_pass">#ca5b02</color>
+    <color name="color_text_login_pass">#9B0329</color>
 
     <string name="tab_noticias">Noticias</string>
     <string name="tab_aplicaciones">Aplicaciones</string>

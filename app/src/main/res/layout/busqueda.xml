@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/back_principal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <LinearLayout
+        android:id="@+id/scroallView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/background_popup" android:layout_marginRight="80dp" android:layout_marginTop="150dp">
+
+    <GridView
+        android:id="@+id/lista_busqueda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="3" android:layout_marginTop="20dp" android:layout_marginBottom="20dp" android:layout_marginLeft="50dp" android:layout_marginRight="50dp">
+
+    </GridView>
+
+        </LinearLayout>
+</LinearLayout>
