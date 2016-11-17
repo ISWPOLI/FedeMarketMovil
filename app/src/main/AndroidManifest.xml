@@ -31,6 +31,12 @@
             android:windowSoftInputMode="stateHidden"
             >
         </activity>
+
+        <activity android:name=".ContenidoActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"
+            >
+        </activity>
     </application>
 
 

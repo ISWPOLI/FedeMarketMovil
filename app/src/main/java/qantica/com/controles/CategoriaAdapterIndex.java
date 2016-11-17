@@ -44,7 +44,7 @@ public class CategoriaAdapterIndex extends BaseAdapter {
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             MyView = inflater.inflate(R.layout.item_categoria, null);
-            MyView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 200));
+           // MyView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 200));
 
             TextView tv = (TextView) MyView.findViewById(R.id.categoria_titulo);
             tv.setText(Singleton.getInstancia().getCategorias().get(position).getNombre());
@@ -52,7 +52,7 @@ public class CategoriaAdapterIndex extends BaseAdapter {
             LinearLayout icon = (LinearLayout) MyView.findViewById(R.id.categoria_image);
 
             LoaderIconCategoria image = new LoaderIconCategoria(mContext, Singleton.getCategorias().get(position).getIcono(), RecursosRed.URL_ICON_CATEGORIA);
-            image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            //image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             icon.addView(image);
         }else{
             MyView = convertView;

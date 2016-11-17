@@ -136,18 +136,15 @@ public class Conexion {
     }
 
     /**
-     * Lista las subcategorias de acuerdo al rol
+     * Lista las subcategorias de acuerdo a la categoria
      * @param context
      * @param postParameters parámetros de la url
      */
     public static void listarSubCategorias(Context context, ArrayList<NameValuePair> postParameters) {
         try {
-			/*ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-			postParameters.add(new BasicNameValuePair("size", "0"));*/
-
             ArrayList<SubCategoria> actualizar = Ejecucion.executeListSubCategoria(postParameters);
 
-            Singleton.setSubcategorias(actualizar);
+            Singleton.getInstancia().setSubcategorias(actualizar);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block

@@ -59,8 +59,7 @@ public class LoaderIconCategoria extends LinearLayout {
      * @param imageUrl
      *            the Image URL you wish to load
      */
-    public LoaderIconCategoria(final Context context, final String imageUrl,
-                               final String servlet) {
+    public LoaderIconCategoria(final Context context, final String imageUrl,final String servlet) {
         super(context);
         instantiate(context, imageUrl, servlet);
     }
@@ -69,17 +68,13 @@ public class LoaderIconCategoria extends LinearLayout {
      * First time loading of the LoaderImageView Sets up the LayoutParams of the
      * view, you can change these to get the required effects you want
      */
-    private void instantiate(final Context context, String imageUrl,
-                             final String servlet) {
+    private void instantiate(final Context context, String imageUrl,final String servlet) {
         mContext = context;
-
         mImage = new ImageView(mContext);
-        mImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT));
+        mImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         mSpinner = new ProgressBar(mContext);
-        mSpinner.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT));
+        mSpinner.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 
         mSpinner.setIndeterminate(true);
 

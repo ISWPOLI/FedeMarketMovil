@@ -372,57 +372,57 @@ public class ProcesoRespuesta {
 
     public static ArrayList<SubCategoria> listarSubCategoria(String cadena) {
 
-        if (cadena.equals("<031>\n")) {
+        if (cadena.equals("<404")) {
             return null;
-        }
+        }else {
 
-        ArrayList<SubCategoria> misCategorias = new ArrayList<SubCategoria>();
+            ArrayList<SubCategoria> misCategorias = new ArrayList<SubCategoria>();
 
-        int contador = 0;
-        String aux = "";
+            int contador = 0;
+            String aux = "";
 
-        String id = "";
-        String nombre = "";
-        String subcategoria = "";
+            String id = "";
+            String nombre = "";
+            String subcategoria = "";
 
-        for (int i = 0; i < cadena.length(); i++) {
+            for (int i = 0; i < cadena.length(); i++) {
 
-            if (cadena.charAt(i) == '|') {
+                if (cadena.charAt(i) == '|') {
 
-                switch (contador) {
-                    case 0:
-                        id = aux;
-                        aux = "";
-                        break;
-                    case 1:
-                        nombre = aux;
-                        aux = "";
-                        break;
-                    case 2:
-                        subcategoria = aux;
-                        aux = "";
-                        break;
-                    default:
-                        break;
+                    switch (contador) {
+                        case 0:
+                            id = aux;
+                            aux = "";
+                            break;
+                        case 1:
+                            nombre = aux;
+                            aux = "";
+                            break;
+                        case 2:
+                            subcategoria = aux;
+                            aux = "";
+                            break;
+                        default:
+                            break;
+                    }
+                    contador++;
+                } else if (cadena.charAt(i) == '>') {
+
+                    SubCategoria miItem = new SubCategoria(id, nombre,
+                            Integer.parseInt(subcategoria), Integer.parseInt(aux));
+                    misCategorias.add(miItem);
+
+                    aux = "";
+                    contador = 0;
+                } else {
+                    if (cadena.charAt(i) != '\n') {
+                        aux = aux + cadena.charAt(i);
+                    }
                 }
-                contador++;
-            } else if (cadena.charAt(i) == '>') {
 
-                SubCategoria miItem = new SubCategoria(id, nombre,
-                        Integer.parseInt(subcategoria), Integer.parseInt(aux));
-                misCategorias.add(miItem);
-
-                aux = "";
-                contador = 0;
-            } else {
-                if (cadena.charAt(i) != '\n') {
-                    aux = aux + cadena.charAt(i);
-                }
             }
-
+            return misCategorias;
         }
-
-        return misCategorias;
     }
 
     public static ArrayList<Comentario> listarComentarios(String cadena) {

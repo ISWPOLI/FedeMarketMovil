@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import qantica.com.animacion.AnimacionAdapter;
 import qantica.com.conexion.Conexion;
@@ -96,19 +97,42 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
         //Listener para las categorias
         gvc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                String idItem = categorias.get(position).getId();
+
+                Categoria categoria = Singleton.getInstancia().getCategorias().get(position);
+
+                String idItem = categoria.getId();
 
                 //Lista las subcategorias asociadas a la categoria que se le dio click
                 ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
-                param.add(new BasicNameValuePair("categoria", idItem));
+                param.add(new BasicNameValuePair("categoria",idItem));
                 Conexion.listarSubCategorias(InicioActivity.this, param);
 
                 animacion = false;
 
-                /*Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
-                Singleton.setCid(Integer.parseInt(idItem));
-                intent.putExtra("categoria", categorias.get(position).getNombre());
-                startActivityForResult(intent, IdActividades.INICIO);*/
+                /*if (Singleton.getInstancia().getSubcategorias().isEmpty()){
+                    Log.e("InicioActivity","La lista se encuentra vacia");
+                }else {
+                    int tam = Singleton.getInstancia().getSubcategorias().size();
+                    for (int i = 0; i < tam; i++) {
+                        Log.e("Subcategorias", Singleton.getInstancia().getSubcategorias().get(tam).getNombre());
+                    }
+                }*/
+
+                //Si la respuesta del Servlet fue 404
+                if(Singleton.getInstancia().getSubcategorias().isEmpty()){
+                    Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
+                    intent.putExtra("categoria","No hay subcategorias.");
+                    startActivity(intent);
+                    Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
+                    Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
+                    toast.show();
+                    Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
+                    Singleton.getInstancia().setCid(Integer.parseInt(idItem));
+                    intent.putExtra("categoria", categoria.getNombre());
+                    startActivityForResult(intent, IdActividades.INICIO);
+                }
             }
         });
 

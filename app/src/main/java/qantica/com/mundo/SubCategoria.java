@@ -2,10 +2,10 @@ package qantica.com.mundo;
 
 public class SubCategoria {
 
-    public String id;
-    public String nombre;
-    public int id_categoria;
-    public int id_subcategoria;
+    private String id;
+    private String nombre;
+    private int id_categoria;
+    private int id_subcategoria;
 
     public SubCategoria(String id, String nombre, int id_categoria, int id_subcategoria) {
         super();
@@ -14,7 +14,6 @@ public class SubCategoria {
         this.id_categoria = id_categoria;
         this.id_subcategoria = id_subcategoria;
     }
-
 
     public String getId() {
         return id;
@@ -44,5 +43,7 @@ public class SubCategoria {
     public void setId_subcategoria(int id_subcategoria) {
         this.id_subcategoria = id_subcategoria;
     }
+
+
 
 }

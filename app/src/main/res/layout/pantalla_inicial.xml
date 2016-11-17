@@ -344,8 +344,8 @@
                     <GridView
                         android:id="@+id/list_categoria"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:columnWidth="100dp"
+                        android:layout_height="match_parent"
+                        android:columnWidth="80dp"
                         android:numColumns="3"
                         android:scrollbars="horizontal" >
                     </GridView>

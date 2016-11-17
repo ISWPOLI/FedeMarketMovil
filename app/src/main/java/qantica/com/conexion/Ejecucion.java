@@ -213,13 +213,11 @@ public class Ejecucion {
             HttpClient client = getHttpClient();
             HttpPost request = new HttpPost(url);
 
-            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(
-                    postParameters);
+            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             request.setEntity(formEntity);
 
             HttpResponse response = client.execute(request);
-            in = new BufferedReader(new InputStreamReader(response.getEntity()
-                    .getContent()));
+            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
             String line = "";
@@ -231,11 +229,13 @@ public class Ejecucion {
 
             String result = sb.toString();
 
-            Singleton.setEstado(true);
+            Log.e("Ejecucion","El resultado de la petición es : "+result);
+
+            Singleton.getInstancia().setEstado(true);
+
             return ProcesoRespuesta.listarSubCategoria(result);
 
         } catch (Exception e) {
-
             Log.w("fed", "Error en el listado de subcategorias");
             Singleton.setEstado(false);
             return null;

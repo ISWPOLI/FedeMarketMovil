@@ -40,11 +40,8 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 
 	public static ArrayList<Contenido> contenido; 
 	Activity app = this;
-	Context context = ContenidoActivity.this;	
+	Context context = ContenidoActivity.this;
 
-	/**
-	 * animacion noticias
-	 */
 	private ViewPager myPager;
 	private final Handler handler = new Handler();
 	private Thread t;
@@ -58,6 +55,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.pantalla_categoria);
+
 		datos = this.getIntent().getExtras();
 
 		contenido = getContentAviable();
@@ -83,11 +81,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		ArrayList<Contenido> result=new ArrayList<Contenido>();		
 		for (int i = 0; i < Singleton.getContenidos().size(); i++) {			
 			if(Singleton.getContenidos().get(i).getEstado().equals("true")){
-				Log.v("fed", "nombre: "+Singleton.getContenidos().get(i).getNombre()+"  estado: "+Singleton.getContenidos().get(i).getEstado());
+				Log.v("ContenidoActivity", "nombre: "+Singleton.getContenidos().get(i).getNombre()+"  estado: "+Singleton.getContenidos().get(i).getEstado());
 				result.add(Singleton.getContenidos().get(i));
 			}
 		}
-		//Organizar alfab�ticamente
+		//Organizar alfabéticamente
 		Collections.sort(result);
 
 		return result;
@@ -104,7 +102,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		gv = (GridView) findViewById(R.id.lista_contenido);
 
 		//verifica si es una busqueda para mostrar informacion		 
-		if (Singleton.getCid() == -1) {			
+		if (Singleton.getInstancia().getCid() == -1) {
 			gv.setAdapter(new BusquedaAdapter(context));
 		} else {
 			lblCategoria.setText(datos.getString("categoria"));
