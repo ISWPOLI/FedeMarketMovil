@@ -56,16 +56,10 @@ public class CategoriaPrimerNivelAdapter extends BaseExpandableListAdapter {
 		/**
 		 * imprime el item de tercer nivel
 		 */
-		SecondLevelexplv
-				.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-					public boolean onChildClick(ExpandableListView parent,
-							View v, int groupPosition_, int childPosition,
+		SecondLevelexplv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+					public boolean onChildClick(ExpandableListView parent,View v, int groupPosition_, int childPosition,
 							long id) {
-
-						
-						actividad.listar(groupPosition, groupPosition_,
-								childPosition);
+						actividad.listarSubcategoria(groupPosition, groupPosition_,childPosition);
 						return false;
 					}
 				});

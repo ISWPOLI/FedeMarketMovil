@@ -105,29 +105,21 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
                 //Lista las subcategorias asociadas a la categoria que se le dio click
                 ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
                 param.add(new BasicNameValuePair("categoria",idItem));
+
                 Conexion.listarSubCategorias(InicioActivity.this, param);
 
                 animacion = false;
 
-                /*if (Singleton.getInstancia().getSubcategorias().isEmpty()){
-                    Log.e("InicioActivity","La lista se encuentra vacia");
-                }else {
-                    int tam = Singleton.getInstancia().getSubcategorias().size();
-                    for (int i = 0; i < tam; i++) {
-                        Log.e("Subcategorias", Singleton.getInstancia().getSubcategorias().get(tam).getNombre());
-                    }
-                }*/
-
                 //Si la respuesta del Servlet fue 404
                 if(Singleton.getInstancia().getSubcategorias().isEmpty()){
                     Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
-                    intent.putExtra("categoria","No hay subcategorias.");
+                    intent.putExtra("categoria","No hay subcategorias");
                     startActivity(intent);
                     Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
                     toast.show();
                 }else{
-                    Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
-                    toast.show();
+                   /* Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
+                    toast.show();*/
                     Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
                     Singleton.getInstancia().setCid(Integer.parseInt(idItem));
                     intent.putExtra("categoria", categoria.getNombre());

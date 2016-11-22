@@ -2,6 +2,7 @@ package qantica.com.controles;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +18,17 @@ import java.util.ArrayList;
 
 import qantica.com.fedemarket.R;
 import qantica.com.fedemarket.Singleton;
+import qantica.com.mundo.SubCategoria;
 
-public class CategoriaAdapterIndex extends BaseAdapter {
+public class SubCategoriaAdapterIndex extends BaseAdapter {
 
     private Context mContext;
-    private static ArrayList<Categoria> iconos;
+    private static ArrayList<SubCategoria> iconos;
     int aux=0;
 
-    public CategoriaAdapterIndex(Context c, ArrayList<Categoria> _icono) {
+    public SubCategoriaAdapterIndex(Context c, ArrayList<SubCategoria> _icono) {
         mContext = c;
-        iconos =  Singleton.getInstancia().getCategorias();
+        iconos =  Singleton.getInstancia().getSubcategorias();
     }
 
     /**
@@ -44,19 +46,21 @@ public class CategoriaAdapterIndex extends BaseAdapter {
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             MyView = inflater.inflate(R.layout.item_categoria, null);
-           // MyView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 200));
+            // MyView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 200));
 
             TextView tv = (TextView) MyView.findViewById(R.id.categoria_titulo);
-            tv.setText(Singleton.getInstancia().getCategorias().get(position).getNombre());
+            tv.setText(Singleton.getInstancia().getSubcategorias().get(position).getNombre());
 
             LinearLayout icon = (LinearLayout) MyView.findViewById(R.id.categoria_image);
 
-            LoaderIconCategoria image = new LoaderIconCategoria(mContext, Singleton.getCategorias().get(position).getIcono(), RecursosRed.URL_ICON_CATEGORIA);
+            LoaderIconCategoria image = new LoaderIconCategoria(mContext, Singleton.getSubcategorias().get(position)
+                    .getIcono(), RecursosRed.URL_ICON_CATEGORIA);
             //image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             icon.addView(image);
         }else{
             MyView = convertView;
-            //Log.v("adaptador"," NULL: "+Singleton.getCategorias().get(position).getNombre()+"  ICONO: "+Singleton.getCategorias().get(aux).getNombre());
+            Log.v("adaptador"," NULL: "+Singleton.getInstancia().getSubcategorias().get(position).getNombre()+
+                    "  ICONO: "+Singleton.getInstancia().getSubcategorias().get(aux).getNombre());
         }
 
         return MyView;

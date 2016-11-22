@@ -26,8 +26,10 @@ import qantica.com.controles.BusquedaAdapter;
 import qantica.com.controles.ContenidoAdapter;
 import qantica.com.controles.ImageAdapter;
 import qantica.com.controles.SubCategoriaAdapter;
+import qantica.com.controles.SubCategoriaAdapterIndex;
 import qantica.com.mundo.Categoria;
 import qantica.com.mundo.Contenido;
+import qantica.com.mundo.SubCategoria;
 
 public class ContenidoActivity extends Activity implements OnClickListener {
 
@@ -38,7 +40,9 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 	private ImageButton botApp;	
 	private GridView gv;
 
-	public static ArrayList<Contenido> contenido; 
+	public static ArrayList<Contenido> contenido;
+	public static ArrayList<SubCategoria> subcategorias;
+
 	Activity app = this;
 	Context context = ContenidoActivity.this;
 
@@ -58,10 +62,23 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 
 		datos = this.getIntent().getExtras();
 
-		contenido = getContentAviable();
-		
 		setControles();
 		setListener();
+
+		if(datos.getString("categoria").equals("No hay subcategorias")){
+			contenido = getContentAvalaible();
+			SingletonActividad.getInstancia().getActividades().add(this);
+		}else{
+			subcategorias = getSubcategoriasAvalaible();
+			//Llena el GridView con las subcategorias
+			try {
+				gv.setAdapter(new SubCategoriaAdapterIndex(this, subcategorias));
+			} catch (Exception e) {
+				e.printStackTrace();
+				Log.e("ContenidoActivityIni", "Subcategorias vacias");
+			}
+
+		}
 
 		AnimacionAdapter adapter = new AnimacionAdapter(ContenidoActivity.this);
 		myPager = (ViewPager) findViewById(R.id.banner_noticia_categoria);
@@ -69,24 +86,46 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		myPager.setCurrentItem(1);
 
 		start();
-		
-		SingletonActividad.getActividades().add(this);
+
 	}
 
 	
 	/**
-	 * Metodo encargado de gestionar 
+	 * Metodo encargado de gestionar el contenido disponible
+	 * @return ArrayLisy con el contenido
 	 */
-	private ArrayList<Contenido> getContentAviable() {
+	private ArrayList<Contenido> getContentAvalaible() {
 		ArrayList<Contenido> result=new ArrayList<Contenido>();		
-		for (int i = 0; i < Singleton.getContenidos().size(); i++) {			
-			if(Singleton.getContenidos().get(i).getEstado().equals("true")){
-				Log.v("ContenidoActivity", "nombre: "+Singleton.getContenidos().get(i).getNombre()+"  estado: "+Singleton.getContenidos().get(i).getEstado());
-				result.add(Singleton.getContenidos().get(i));
+		for (int i = 0; i < Singleton.getInstancia().getContenidos().size(); i++) {
+			if(Singleton.getInstancia().getContenidos().get(i).getEstado().equals("true")){
+				Log.v("ContenidoActivity", "nombre: "+Singleton.getInstancia().
+						getContenidos().get(i).getNombre()+"  estado: "
+						+Singleton.getInstancia().getContenidos().get(i).getEstado());
+				result.add(Singleton.getInstancia().getContenidos().get(i));
 			}
 		}
 		//Organizar alfabéticamente
 		Collections.sort(result);
+
+		return result;
+	}
+
+	/**
+	 * Metodo encargado de gestionar las subcategorias disponibles
+	 * @return ArrayList con el contenido
+	 */
+	private ArrayList<SubCategoria> getSubcategoriasAvalaible() {
+		ArrayList<SubCategoria> result=new ArrayList<SubCategoria>();
+		for (int i = 0; i < Singleton.getInstancia().getSubcategorias().size(); i++) {
+			//if(Singleton.getInstancia().getSubcategorias().get(i).getEstado().equals("true")){
+				Log.v("ContenidoActivity2", "nombre: "+Singleton.getInstancia().getSubcategorias().get(i).getNombre()+
+						"  estado: "+Singleton.getInstancia().getSubcategorias().get(i).getEstado()+" icono: "+
+				Singleton.getInstancia().getSubcategorias().get(i).getIcono());
+				result.add(Singleton.getInstancia().getSubcategorias().get(i));
+			//}
+		}
+		//Organizar alfabéticamente
+		//Collections.sort(result);
 
 		return result;
 	}
@@ -119,11 +158,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		//eventos de la cuadricula que contiene los contenidos		 
 		gv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView parent, View v, int position,long id) {
-				if (Singleton.getCid() != -1) {
-					getContenido(position);
-				} else {
-					getBusqueda(position);
-				}
+			if (Singleton.getCid() != -1) {
+				getContenido(position);
+			} else {
+				getBusqueda(position);
+			}
 			}
 		});
 	}
@@ -141,7 +180,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 						handler.post(cambiarAnimacion);
 					}
 				} catch (Exception e) {
-					Log.e("fed", "fed error en el retardo");
+					Log.e("ContenidoActivity", "fed error en el retardo");
 				}
 			}
 		};
@@ -154,8 +193,8 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		}
 	};
 
-	public void listar(int x, int y, int z) {
-		gv.setAdapter(new SubCategoriaAdapter(context, x, y, z));
+	public void listarSubcategoria(int categoria, int subcategoria, int seleccion) {
+		gv.setAdapter(new SubCategoriaAdapter(context, categoria, subcategoria, seleccion));
 	}
 
 	public void limpiar() {
@@ -177,37 +216,30 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 
 	}
 
+	/**
+	 * Obtiene el contenido asociado a una subcategoria
+	 * @param position
+     */
 	private void getContenido(int position) {
 
 		Intent intent = new Intent(ContenidoActivity.this, DescargaView.class);
 
-		intent.putExtra("nombre", Singleton.getPresentacion().get(position)
-				.getNombre());
-		intent.putExtra("descargas", Singleton.getPresentacion().get(position)
-				.getDescargas());
-		intent.putExtra("descripcion", Singleton.getPresentacion()
-				.get(position).getDescripcion());
-		intent.putExtra("aid", Singleton.getPresentacion().get(position)
-				.getId());
-		intent.putExtra("version", Singleton.getPresentacion().get(position)
-				.getVersion());
-		intent.putExtra("cap_1", Singleton.getPresentacion().get(position)
-				.getCap_1());
-		intent.putExtra("cap_2", Singleton.getPresentacion().get(position)
-				.getCap_2());
-		intent.putExtra("version", Singleton.getPresentacion().get(position)
-				.getVersion());
-		intent.putExtra("icono", Singleton.getPresentacion().get(position)
-				.getIcono());
-		intent.putExtra("rtn", Singleton.getPresentacion().get(position)
-				.getRating());
+		intent.putExtra("nombre", Singleton.getInstancia().getPresentacion().get(position).getNombre());
+		intent.putExtra("descargas", Singleton.getInstancia().getPresentacion().get(position).getDescargas());
+		intent.putExtra("descripcion", Singleton.getInstancia().getPresentacion().get(position).getDescripcion());
+		intent.putExtra("aid", Singleton.getInstancia().getPresentacion().get(position).getId());
+		intent.putExtra("version", Singleton.getInstancia().getPresentacion().get(position).getVersion());
+		intent.putExtra("cap_1", Singleton.getInstancia().getPresentacion().get(position).getCap_1());
+		intent.putExtra("cap_2", Singleton.getInstancia().getPresentacion().get(position).getCap_2());
+		intent.putExtra("version", Singleton.getInstancia().getPresentacion().get(position).getVersion());
+		intent.putExtra("icono", Singleton.getInstancia().getPresentacion().get(position).getIcono());
+		intent.putExtra("rtn", Singleton.getInstancia().getPresentacion().get(position).getRating());
 
 		startActivity(intent);
 
 	}
 
 	private void getBusqueda(int position) {
-
 		if (Singleton.getResultados().get(position) instanceof Contenido) {
 
 			Contenido contenido = (Contenido) Singleton.getResultados().get(position);

@@ -29,35 +29,30 @@ public class ContenidoAdapter extends BaseAdapter {
 
 	public ContenidoAdapter(Context c, ArrayList<Contenido> _icono) {
 		mContext = c;
-		int aux = Singleton.getCid();
-		_icono = Singleton.getContenidos();
+		int aux = Singleton.getInstancia().getCid();
+		_icono = Singleton.getInstancia().getContenidos();
 
 		// se verifica si es una categoria en especial a listar
 		if (aux != 0) {
 			for (int i = 0; i < _icono.size(); i++) {
-
-				if (aux == _icono.get(i).getCategoria()&& _icono.get(i).getEstado().equals("true")) {
+				if (aux == _icono.get(i).getCategoria() && _icono.get(i).getEstado().equals("true")) {
 					iconos.add(_icono.get(i));
 				}
 			}
 		}
 		// de lo contrario se sabe que va se va listar todo
 		else {
-
 			for (int i = 0; i < _icono.size(); i++) {
-
 				if (_icono.get(i).getEstado().equals("true")) {
 					iconos.add(_icono.get(i));
 				}
 			}
-			
 		}
 
 		// se verifica si no existen contenidos y se muestra un mensaje
 		// indicandolo
 		if (iconos.size() == 0) {
-			DialogoPopUp dialogoPopUp = new DialogoPopUp(c,
-					Mensaje.MSJ_NO_CONTENIDOS);
+			DialogoPopUp dialogoPopUp = new DialogoPopUp(c,Mensaje.MSJ_NO_CONTENIDOS);
 			dialogoPopUp.show();
 		}
 
