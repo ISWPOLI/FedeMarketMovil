@@ -197,22 +197,18 @@ public class ManagerBD {
 
         DriverSQL connect = new DriverSQL(context, "contenido", null, VERSION);
         SQLiteDatabase db = connect.getWritableDatabase();
-        Cursor cursor = db
-                .rawQuery(
-                        "SELECT codigo, nombre, categoria_id, subcategoria_id FROM Subcategoria ORDER BY nombre",
-                        null);
+        Cursor cursor = db.rawQuery("SELECT codigo, nombre, categoria_id, subcategoria_id, img FROM Subcategoria ORDER BY nombre", null);
 
         if (cursor.moveToFirst()) {
-            // Recorremos el cursor hasta que no haya m�s registros
             do {
                 String id = cursor.getString(0);
                 String nombre = cursor.getString(1);
                 String categoria = cursor.getString(2);
                 String subcategoria = cursor.getString(3);
+                String icono = cursor.getString(4);
 
-                SubCategoria miItem = new SubCategoria(id, nombre,
-                        Integer.parseInt(categoria),
-                        Integer.parseInt(subcategoria));
+                SubCategoria miItem = new SubCategoria(id, nombre,Integer.parseInt(categoria),
+                        Integer.parseInt(subcategoria),"true", icono);
                 listaCategoria.add(miItem);
 
             } while (cursor.moveToNext());

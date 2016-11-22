@@ -81,7 +81,7 @@ public class LoaderIconCategoria extends LinearLayout {
         addView(mSpinner);
         addView(mImage);
 
-        if(imageUrl == "<404"){
+        if(imageUrl == "<404>"){
             imageUrl = null;
         }
 
@@ -98,7 +98,6 @@ public class LoaderIconCategoria extends LinearLayout {
      *            the url of the image you wish to load
      */
     public void setImageDrawable(final String imageUrl, final String servlet) {
-        Log.e("SETIMAGEDRAWBLE", imageUrl);
         mDrawable = null;
         mSpinner.setVisibility(View.VISIBLE);
         mImage.setVisibility(View.GONE);
@@ -110,6 +109,8 @@ public class LoaderIconCategoria extends LinearLayout {
                         mDrawable = Drawable.createFromPath(file.getAbsolutePath());
                         imageLoadedHandler.sendEmptyMessage(COMPLETE);
                     } else {
+                        Log.e("LoaderIconCategoria",imageUrl);
+                        Log.e("LoaderIconCategoria",servlet);
                         mDrawable = getDrawableFromUrl(imageUrl, servlet);
                         try {
                             Bitmap bm = ((BitmapDrawable) mDrawable).getBitmap();
@@ -123,7 +124,7 @@ public class LoaderIconCategoria extends LinearLayout {
                             imageLoadedHandler.sendEmptyMessage(COMPLETE);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Log.i("QanticaMarket", "Error cargando imagen... "+ imageUrl);
+                            Log.i("LoaderIconCategoria", "Error cargando imagen... "+ imageUrl);
                         }
                     }
                 } catch (MalformedURLException e) {
@@ -167,7 +168,8 @@ public class LoaderIconCategoria extends LinearLayout {
      */
     private static Drawable getDrawableFromUrl(final String url,
                                                final String servlet) throws IOException, MalformedURLException {
-
+        Log.e("LoaderIconCategoria1","URL: "+url);
+        Log.e("LoaderIconCategoria2","Servlet: "+servlet);
         if (servlet != null) {
             return Drawable.createFromStream(
                     ((java.io.InputStream) new java.net.URL(servlet

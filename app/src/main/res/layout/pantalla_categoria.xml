@@ -34,31 +34,27 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/btn_atras"
-                    android:layout_width="match_parent"
+                    android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.119"
                     android:background="@drawable/ico_atras" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="17dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/btn_home"
-                    android:layout_width="match_parent"
+                    android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.119"
                     android:background="@drawable/ico_home" />
 
                 <LinearLayout
@@ -71,24 +67,21 @@
 
                 <ImageButton
                     android:id="@+id/btn_apps"
-                    android:layout_width="match_parent"
+                    android:layout_width="85dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.11"
                     android:background="@drawable/ico_apps" />
 
                 <ImageButton
                     android:id="@+id/btn_fedetic"
-                    android:layout_width="match_parent"
+                    android:layout_width="93dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.11"
                     android:layout_gravity="center"
                     android:background="@drawable/ico_fedetic" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="44dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
             </LinearLayout>
 
@@ -121,12 +114,11 @@
 
                     <LinearLayout
                         android:id="@+id/linearLayout6"
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="572dp"
+                        android:layout_height="124dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="5dp"
-                        android:layout_weight="0.3"
                         android:background="@drawable/img_noticia_"
                         android:orientation="horizontal" >
 
@@ -168,8 +160,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:numColumns="1"
-                            android:scrollbars="vertical"
+                            android:columnWidth="80dp"
+                            android:numColumns="3"
+                            android:scrollbars="horizontal"
                             android:soundEffectsEnabled="true"
                             android:stretchMode="columnWidth" >
                         </GridView>

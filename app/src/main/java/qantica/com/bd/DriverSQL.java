@@ -12,7 +12,7 @@ public class DriverSQL extends SQLiteOpenHelper {
 
     String sqlCreate_descargas = "CREATE TABLE Descarga (codigo INTEGER, nombre TEXT, version TEXT, ico TEXT)";
 
-    String sqlCreate_subcategoria = "CREATE TABLE Subcategoria (codigo INTEGER, nombre TEXT, categoria_id INTEGER, subcategoria_id)";
+    String sqlCreate_subcategoria = "CREATE TABLE Subcategoria (codigo INTEGER, nombre TEXT, categoria_id INTEGER, subcategoria_id,img TEXT)";
 
 
 

@@ -128,62 +128,46 @@ public class BusquedaAdapter extends BaseAdapter {
 		View MyView = convertView;
 
 		if (convertView == null) {
-
 			if (result.get(position) instanceof Contenido) {
-
-				LayoutInflater inflater = (LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				MyView = inflater.inflate(R.layout.item_galeria, null);
 				MyView.setLayoutParams(new GridView.LayoutParams(250, 200));
 
 				contenido = (Contenido) result.get(position);
 
-				TextView tv = (TextView) MyView
-						.findViewById(R.id.grid_item_text);
+				TextView tv = (TextView) MyView.findViewById(R.id.grid_item_text);
 				tv.setText(contenido.getNombre());
 
-				TextView tvx = (TextView) MyView
-						.findViewById(R.id.grid_item_descarga);
+				TextView tvx = (TextView) MyView.findViewById(R.id.grid_item_descarga);
 				tvx.setText(contenido.getDescargas() + " Descargas");
 
-				RatingBar mr = (RatingBar) MyView
-						.findViewById(R.id.rating_galeria);
+				RatingBar mr = (RatingBar) MyView.findViewById(R.id.rating_galeria);
 				mr.setRating((float) contenido.getRating());
 				mr.setEnabled(false);
 
-				LinearLayout icon = (LinearLayout) MyView
-						.findViewById(R.id.grid_item_image);
-				LoaderIconCategoria image = new LoaderIconCategoria(mContext,
-						contenido.getIcono(), RecursosRed.URL_ICON_CATEGORIA);
+				LinearLayout icon = (LinearLayout) MyView.findViewById(R.id.grid_item_image);
+				LoaderIconCategoria image = new LoaderIconCategoria(mContext,contenido.getIcono(), RecursosRed.URL_ICON_CATEGORIA);
 
-				image.setLayoutParams(new LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				image.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 				icon.addView(image);
 			} else {
 
-				LayoutInflater inflater = (LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				MyView = inflater.inflate(R.layout.item_categoria, null);
 				MyView.setLayoutParams(new GridView.LayoutParams(250, 200));
 
 				categoria = (Categoria) result.get(position);
 
-				TextView tv = (TextView) MyView
-						.findViewById(R.id.categoria_titulo);
+				TextView tv = (TextView) MyView.findViewById(R.id.categoria_titulo);
 				tv.setText(categoria.getNombre());
 
-				LinearLayout icon = (LinearLayout) MyView
-						.findViewById(R.id.categoria_image);
+				LinearLayout icon = (LinearLayout) MyView.findViewById(R.id.categoria_image);
 
-				LoaderIconCategoria image = new LoaderIconCategoria(mContext,
-						categoria.getIcono(), RecursosRed.URL_ICON_CATEGORIA);
-				image.setLayoutParams(new LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				LoaderIconCategoria image = new LoaderIconCategoria(mContext,categoria.getIcono(), RecursosRed.URL_ICON_CATEGORIA);
+				image.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 				icon.addView(image);
 			}
-
 		}
-
 		return MyView;
 	}
 

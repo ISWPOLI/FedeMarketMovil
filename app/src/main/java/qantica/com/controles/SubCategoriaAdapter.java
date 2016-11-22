@@ -2,6 +2,7 @@ package qantica.com.controles;
 
 import java.util.ArrayList;
 
+import qantica.com.fedemarket.ContenidoActivity;
 import qantica.com.fedemarket.R;
 import qantica.com.fedemarket.Singleton;
 import qantica.com.conf.RecursosRed;
@@ -27,38 +28,23 @@ public class SubCategoriaAdapter extends BaseAdapter {
 	private Context mContext;
 	private ArrayList<Contenido> iconos = new ArrayList<Contenido>();
 
-	public SubCategoriaAdapter(Context c, int categoria, int subcategoria,
-			int seleccion) {
-
+	public SubCategoriaAdapter(Context c, int categoria, int subcategoria, int seleccion) {
 		mContext = c;
-		ArrayList<Contenido> misContenidos = Singleton.getContenidos();
-
-		// se busca y se almacena el id de la categoria de primer nivel basado
-		// en la posicion
-		int id_categoria = Integer.parseInt(Singleton.getCategorias()
-				.get(categoria).getId());
-		// se busca y almacena el id de la categoria de segundo nivel basado en
-		// la posicion y el id de la categoria de primer nivel
+		ArrayList<Contenido> misContenidos = Singleton.getInstancia().getContenidos();
+		int id_categoria = Integer.parseInt(Singleton.getInstancia().getCategorias().get(categoria).getId());
 		int id_subcategoria = searchSubcategoria(id_categoria, subcategoria);
-		// se busca y almacena el id de la categoria de tercer nivel basado en
-		// la posicion y el id de la categoria de tercer nivel
 		int id_seleccion = searchSeleccion(id_subcategoria, seleccion);
 
-		// se recorre el array de contenidos en busca de contenidos que como
-		// categoria final tengan el id de la categoria de tercer nivel y se
-		// adiciona al array de resultados
 		for (int i = 0; i < misContenidos.size(); i++) {
-
 			if (misContenidos.get(i).getSubcategoria() == id_seleccion && misContenidos.get(i).getEstado().equals("true")) {
 				iconos.add(misContenidos.get(i));
 			}
-
 		}
 
-//		Log.i("---->", id_categoria+"     "+id_subcategoria+"   "+id_seleccion+"   "+iconos.size() );
-		// se asiga el arreglo que se esta mostrando al singleton 
-		Singleton.setPresentacion(iconos);
+		Singleton.getInstancia().setPresentacion(iconos);
 	}
+
+
 
 	public int getCount() {
 		return iconos.size();

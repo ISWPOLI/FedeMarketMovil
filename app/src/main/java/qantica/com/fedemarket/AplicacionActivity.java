@@ -38,10 +38,8 @@ public class AplicacionActivity extends Activity {
 
 		ArrayList<DescargaItem> misContenidos = listarContenido();
 
-		// invocacion al metodo para asignar los valores de la interface a las
-		// variables locales
 		setControles();
-		// invoca el metodo para colocarle el evento a los botones
+
 		setListeners();
 
 		if (misContenidos.size() > 0) {

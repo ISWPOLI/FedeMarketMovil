@@ -31,7 +31,6 @@ public class DialogoPopUp extends Dialog {
         botAceptar.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
                 finish();
             }
         });
@@ -39,7 +38,6 @@ public class DialogoPopUp extends Dialog {
     }
 
     protected void finish() {
-
         this.cancel();
     }
 }

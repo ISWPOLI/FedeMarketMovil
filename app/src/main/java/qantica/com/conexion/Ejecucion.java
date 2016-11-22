@@ -229,14 +229,13 @@ public class Ejecucion {
 
             String result = sb.toString();
 
-            Log.e("Ejecucion","El resultado de la petición es : "+result);
-
             Singleton.getInstancia().setEstado(true);
 
             return ProcesoRespuesta.listarSubCategoria(result);
 
         } catch (Exception e) {
-            Log.w("fed", "Error en el listado de subcategorias");
+            Log.w("Ejecucion", "Error en el listado de subcategorias");
+            e.printStackTrace();
             Singleton.setEstado(false);
             return null;
         }

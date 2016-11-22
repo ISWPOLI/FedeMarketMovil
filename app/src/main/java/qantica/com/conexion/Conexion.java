@@ -149,7 +149,7 @@ public class Conexion {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            Log.w("QANTICAMARKET", "Error subcategorias");
+            Log.w("Conexión", "Error subcategorias");
             Singleton.setEstado(false);
         }
 
