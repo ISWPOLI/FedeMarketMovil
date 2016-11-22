@@ -68,6 +68,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 		if(datos.getString("categoria").equals("No hay subcategorias")){
 			contenido = getContentAvalaible();
 			SingletonActividad.getInstancia().getActividades().add(this);
+			//lblCategoria.setText(datos.getString("categoria2"));
 		}else{
 			subcategorias = getSubcategoriasAvalaible();
 			//Llena el GridView con las subcategorias
@@ -117,12 +118,10 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 	private ArrayList<SubCategoria> getSubcategoriasAvalaible() {
 		ArrayList<SubCategoria> result=new ArrayList<SubCategoria>();
 		for (int i = 0; i < Singleton.getInstancia().getSubcategorias().size(); i++) {
-			//if(Singleton.getInstancia().getSubcategorias().get(i).getEstado().equals("true")){
-				Log.v("ContenidoActivity2", "nombre: "+Singleton.getInstancia().getSubcategorias().get(i).getNombre()+
-						"  estado: "+Singleton.getInstancia().getSubcategorias().get(i).getEstado()+" icono: "+
-				Singleton.getInstancia().getSubcategorias().get(i).getIcono());
-				result.add(Singleton.getInstancia().getSubcategorias().get(i));
-			//}
+			Log.v("ContenidoActivity2", "nombre: "+Singleton.getInstancia().getSubcategorias().get(i).getNombre()+
+					"  estado: "+Singleton.getInstancia().getSubcategorias().get(i).getEstado()+" icono: "+
+			Singleton.getInstancia().getSubcategorias().get(i).getIcono());
+			result.add(Singleton.getInstancia().getSubcategorias().get(i));
 		}
 		//Organizar alfabéticamente
 		//Collections.sort(result);

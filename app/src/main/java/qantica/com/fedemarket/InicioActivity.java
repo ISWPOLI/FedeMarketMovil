@@ -37,6 +37,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import qantica.com.controles.CategoriaAdapterIndex;
 import qantica.com.controles.LoaderIconCategoria;
@@ -111,20 +112,30 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
                 animacion = false;
 
                 //Si la respuesta del Servlet fue 404
-                if(Singleton.getInstancia().getSubcategorias().isEmpty()){
+                try{
+                    if(Singleton.getInstancia().getSubcategorias().isEmpty()){
+                        Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
+                        intent.putExtra("categoria","No hay subcategorias");
+                        intent.putExtra("categoria2",categoria.getNombre());
+                        startActivity(intent);
+                        Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
+                        toast.show();
+                    }else{
+                   /* Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
+                    toast.show();*/
+                        Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
+                        Singleton.getInstancia().setCid(Integer.parseInt(idItem));
+                        intent.putExtra("categoria", categoria.getNombre());
+                        startActivityForResult(intent, IdActividades.INICIO);
+                    }
+                }catch (Exception e){
                     Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
                     intent.putExtra("categoria","No hay subcategorias");
                     startActivity(intent);
                     Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
                     toast.show();
-                }else{
-                   /* Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
-                    toast.show();*/
-                    Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
-                    Singleton.getInstancia().setCid(Integer.parseInt(idItem));
-                    intent.putExtra("categoria", categoria.getNombre());
-                    startActivityForResult(intent, IdActividades.INICIO);
                 }
+
             }
         });
 

@@ -49,11 +49,10 @@ public class ContenidoAdapter extends BaseAdapter {
 			}
 		}
 
-		// se verifica si no existen contenidos y se muestra un mensaje
-		// indicandolo
+		// se verifica si no existen contenidos y se muestra un mensaje indicandolo
 		if (iconos.size() == 0) {
-			DialogoPopUp dialogoPopUp = new DialogoPopUp(c,Mensaje.MSJ_NO_CONTENIDOS);
-			dialogoPopUp.show();
+			//DialogoPopUp dialogoPopUp = new DialogoPopUp(c,Mensaje.MSJ_NO_CONTENIDOS);
+			//dialogoPopUp.show();
 		}
 
 		Singleton.setPresentacion(iconos);
