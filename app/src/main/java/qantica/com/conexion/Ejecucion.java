@@ -249,18 +249,21 @@ public class Ejecucion {
      * @return
      * @throws Exception
      */
-    public static ArrayList<Contenido> executeHttpPostContenido()
-            throws Exception {
+    public static ArrayList<Contenido> executeHttpPostContenido(ArrayList<NameValuePair> postParameters)throws Exception {
         BufferedReader in = null;
 
         String url = RecursosRed.URL_CONTENIDO;
 
         try {
             HttpClient client = getHttpClient();
+
             HttpPost request = new HttpPost(url);
+
+            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
+            request.setEntity(formEntity);
+
             HttpResponse response = client.execute(request);
-            in = new BufferedReader(new InputStreamReader(response.getEntity()
-                    .getContent()));
+            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
             String line = "";
