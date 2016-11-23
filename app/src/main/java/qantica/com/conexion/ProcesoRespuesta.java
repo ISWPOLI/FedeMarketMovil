@@ -184,10 +184,9 @@ public class ProcesoRespuesta {
 
     public static ArrayList<SubCategoria> listarSubCategoria(String cadena) {
         Log.e("ProcesoRespuesta" ,cadena);
-        if (cadena.equals("<404>")) {
+        if (cadena.equals("<404>\n")) {
             return null;
         }else {
-
             ArrayList<SubCategoria> misCategorias = new ArrayList<SubCategoria>();
 
             int contador = 0;
@@ -203,26 +202,21 @@ public class ProcesoRespuesta {
                 if (cadena.charAt(i) == '|') {
                     switch (contador) {
                         case 0:
-                            Log.e("ProcesoRespuesta0",aux);
                             id = aux;
                             aux = "";
                             break;
                         case 1:
-                            Log.e("ProcesoRespuesta1",aux);
                             nombre = aux;
                             aux = "";
                             break;
                         case 2:
-                            Log.e("ProcesoRespuesta2",aux);
                             aux = "";
                             break;
                         case 3:
-                            Log.e("ProcesoRespuesta3",aux);
                             categoria = aux;
                             aux = "";
                             break;
                         case 4:
-                            Log.e("ProcesoRespuesta4",aux);
                             icono = aux;
                             aux = "";
                             break;
@@ -231,6 +225,7 @@ public class ProcesoRespuesta {
                     }
                     contador++;
                 } else if (cadena.charAt(i) == '>') {
+                    if(categoria == "") categoria = "0";
 
                     SubCategoria miItem = new SubCategoria(id, nombre,Integer.valueOf(categoria),0,estado,icono);
                     misCategorias.add(miItem);

@@ -56,7 +56,7 @@ public class Conexion {
     /**
      * Actualización de los datos
      * @param context
-     */
+
     public static void buscarGaleria(Context context) {
         try {
             ArrayList<Contenido> result = ManagerBD.listarContenido(context);
@@ -101,7 +101,7 @@ public class Conexion {
             Log.w("fed", "Error en el listado de contenidos");
 
         }
-    }
+    }*/
 
     /**
      * realiza la busqueda en el servidor de los contenidos mas descargados
@@ -127,11 +127,30 @@ public class Conexion {
     public static void listarCategorias(Context context, ArrayList<NameValuePair> postParameters) {
         try {
             ArrayList<Categoria> result = Ejecucion.executeHttpPostCategoria(postParameters);
-            Singleton.setCategorias(result);
+            Singleton.getInstancia().setCategorias(result);
         } catch (Exception e) {
             e.printStackTrace();
-            Singleton.setEstado(false);
+            Singleton.getInstancia().setEstado(false);
             Log.w("Conexion.java", "Error en el listado de categorias");
+        }
+    }
+
+    /**
+     * Lista los contenidos de acuerdo a la subcategoria y categoria
+     * @param context Contexto en el que se encuentra la aplicación
+     * @param postParameters Parámetros que se envian al server
+     */
+    public static void listarContenido(Context context, ArrayList<NameValuePair> postParameters) {
+        try {
+            for (int i = 0; i < postParameters.size(); i++) {
+                Log.e("Conexion","Parametro Contenido: "+String.valueOf(postParameters.get(i)));
+            }
+            ArrayList<Contenido> result = Ejecucion.executeHttpPostContenido(postParameters);
+            Singleton.getInstancia().setContenidos(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Singleton.getInstancia().setEstado(false);
+            Log.w("Conexion.java", "Error en el listado de contenido");
         }
     }
 

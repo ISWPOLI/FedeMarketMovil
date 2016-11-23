@@ -113,26 +113,32 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
 
                 //Si la respuesta del Servlet fue 404
                 try{
-                    if(Singleton.getInstancia().getSubcategorias().isEmpty()){
+                    if(Singleton.getInstancia().getSubcategorias() == null){
+                        ArrayList<NameValuePair> param1 = new ArrayList<NameValuePair>();
+                        param1.add(new BasicNameValuePair("subcategoria","0"));
+                        param1.add(new BasicNameValuePair("categoria", idItem));
+
+                        Conexion.listarContenido(InicioActivity.this,param1);
+
                         Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
                         intent.putExtra("categoria","No hay subcategorias");
                         intent.putExtra("categoria2",categoria.getNombre());
+                        intent.putExtra("idCategoria",categoria.getId());
                         startActivity(intent);
-                        Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(InicioActivity.this,"No hay subcategorias... vacio!",Toast.LENGTH_SHORT);
                         toast.show();
                     }else{
-                   /* Toast toast = Toast.makeText(InicioActivity.this,"No está vacio", Toast.LENGTH_SHORT);
-                    toast.show();*/
+                        Toast toast = Toast.makeText(InicioActivity.this,"Si hay subcategorias!", Toast.LENGTH_SHORT);
+                        toast.show();
                         Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
                         Singleton.getInstancia().setCid(Integer.parseInt(idItem));
                         intent.putExtra("categoria", categoria.getNombre());
+                        intent.putExtra("idCategoria",categoria.getId());
                         startActivityForResult(intent, IdActividades.INICIO);
                     }
                 }catch (Exception e){
-                    Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
-                    intent.putExtra("categoria","No hay subcategorias");
-                    startActivity(intent);
-                    Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
+                    e.printStackTrace();
+                    Toast toast = Toast.makeText(InicioActivity.this,"EXCEPCIÓN!",Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
@@ -264,11 +270,13 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             Singleton.getInstancia().limpiar();
             Singleton.getInstancia().setAnimacion(false);
-            ArrayList<Activity> actividades = SingletonActividad.getInstancia().getActividades();
+            Intent intent = new Intent(InicioActivity.this, Login.class);
+            startActivity(intent);
+            /*ArrayList<Activity> actividades = SingletonActividad.getInstancia().getActividades();
             SingletonActividad.getInstancia().setActividades(new ArrayList<Activity>());
             for (int i = 0; i < actividades.size(); i++) {
                 actividades.get(i).finish();
-            }
+            }*/
         }
         return super.onKeyDown(keyCode, event);
     }
