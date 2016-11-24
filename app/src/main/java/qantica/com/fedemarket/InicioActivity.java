@@ -115,8 +115,9 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
                 try{
                     if(Singleton.getInstancia().getSubcategorias() == null){
                         ArrayList<NameValuePair> param1 = new ArrayList<NameValuePair>();
-                        param1.add(new BasicNameValuePair("subcategoria","0"));
                         param1.add(new BasicNameValuePair("categoria", idItem));
+                        param1.add(new BasicNameValuePair("subcategoria","0"));
+
 
                         Conexion.listarContenido(InicioActivity.this,param1);
 

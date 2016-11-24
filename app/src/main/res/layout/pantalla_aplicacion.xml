@@ -12,10 +12,11 @@
 
         <LinearLayout
             android:id="@+id/linearLayout1"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.93"
-            android:background="@drawable/background_indicadores" >
+            android:background="@drawable/background_indicadores"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:id="@+id/LayoutSuperior"
@@ -33,31 +34,27 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/btn_atras"
-                    android:layout_width="match_parent"
+                    android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.119"
                     android:background="@drawable/ico_atras" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="17dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/btn_home"
-                    android:layout_width="match_parent"
+                    android:layout_width="56dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.119"
                     android:background="@drawable/ico_home" />
 
                 <LinearLayout
@@ -70,24 +67,21 @@
 
                 <ImageButton
                     android:id="@+id/btn_apps"
-                    android:layout_width="match_parent"
+                    android:layout_width="85dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="0.11"
                     android:background="@drawable/ico_apps" />
 
                 <ImageButton
                     android:id="@+id/btn_fedetic"
-                    android:layout_width="match_parent"
+                    android:layout_width="93dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.11"
                     android:layout_gravity="center"
                     android:background="@drawable/ico_fedetic" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.14" >
+                    android:layout_width="44dp"
+                    android:layout_height="match_parent">
                 </LinearLayout>
             </LinearLayout>
 
@@ -99,7 +93,6 @@
                 android:orientation="horizontal" >
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
