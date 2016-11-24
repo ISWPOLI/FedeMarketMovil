@@ -85,9 +85,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
         setListener();
 
         //Si no hay subcategorias, lista el contenido asociado a la categoria
-        if (datos.getString("categoria").equals("No hay subcategorias")) {
-            contenido = getContentAvalaible();
+        if (datos.getString("categoria").equals("No hay subcategorias") ||
+                datos.getString("categoria").equals("content")) {
+
             lblCategoria.setText("Contenido disponible:");
+            Log.e("ContenidoActivity",String.valueOf(Singleton.getInstancia().getContenidos().size()));
             try{
                 gv.setAdapter(new ContenidoAdapter(this, Singleton.getInstancia().getContenidos()));
             }catch (Exception e){
@@ -127,8 +129,8 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 
                     //Lista el contenido asociadas a la categoria que se le dio click
                     ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
-                    param.add(new BasicNameValuePair("subcategoria",idSubcategoria));
                     param.add(new BasicNameValuePair("categoria", String.valueOf(Singleton.getInstancia().getCid())));
+                    param.add(new BasicNameValuePair("subcategoria",idSubcategoria));
 
                     Conexion.listarContenido(ContenidoActivity.this, param);
 
@@ -145,8 +147,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
                         }else{
                             Toast toast = Toast.makeText(ContenidoActivity.this,"Si hay contenido", Toast.LENGTH_SHORT);
                             toast.show();
-                            Intent intent = new Intent(ContenidoActivity.this,AplicacionActivity.class);
-                            intent.putExtra("categoria",datos.getString("categoria"));
+
+                            Conexion.listarContenido(ContenidoActivity.this,param);
+
+                            Intent intent = new Intent(ContenidoActivity.this,ContenidoActivity.class);
+                            intent.putExtra("categoria","content");
                             startActivityForResult(intent, IdActividades.CONTENIDO);
                         }
                     }catch (Exception e){
