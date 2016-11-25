@@ -325,6 +325,40 @@ public class Ejecucion {
         }
     }
 
+    public static void executeIngreso(ArrayList<NameValuePair> postParameters){
+        String url = RecursosRed.URL_INGRESO;
+
+        BufferedReader in;
+
+        try {
+            HttpClient client = getHttpClient();
+
+            HttpPost request = new HttpPost(url);
+
+            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
+            request.setEntity(formEntity);
+
+            HttpResponse response = client.execute(request);
+
+            in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+            StringBuffer sb = new StringBuffer("");
+            String line = "";
+            String NL = System.getProperty("line.separator");
+            while ((line = in.readLine()) != null) {
+                sb.append(line + NL);
+            }
+            in.close();
+
+            String result = sb.toString();
+
+            //Log.e("Ejecucion", result);
+
+        } catch (Exception e) {
+            Log.i("Ejecucion", "" + e.getStackTrace());
+        }
+    }
+
     /**
      * metodo encargado de listar los elementos destacados
      *
@@ -358,7 +392,7 @@ public class Ejecucion {
 
         } catch (Exception e) {
 
-            Log.w("fed", "Error en el listado de destacados");
+            Log.w("Ejecucion", "Error en el listado de destacados");
             return null;
         }
     }

@@ -64,7 +64,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
     private Thread t;
     private boolean animacion = true;
     private int contador = 0;
-    public static boolean existSubc = false;
+    public static boolean existSubc = false, isApp = false;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -87,7 +87,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
         //Si no hay subcategorias, lista el contenido asociado a la categoria
         if (datos.getString("categoria").equals("No hay subcategorias") ||
                 datos.getString("categoria").equals("content")) {
-
+            isApp = true;
             lblCategoria.setText("Contenido disponible:");
             Log.e("ContenidoActivity",String.valueOf(Singleton.getInstancia().getContenidos().size()));
             try{
@@ -116,10 +116,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
             public void onItemClick(AdapterView parent, View view, int position, long id) {
 
                 //Si no hay subcategorias, mando a la pantalla de descripción de Aplicación
-                if(!existSubc){
+                if(!existSubc || isApp){
                     //Busco la aplicación para extraer los datos
                     Toast toast = Toast.makeText(ContenidoActivity.this, "Mandar a la pantalla de aplicación",Toast.LENGTH_SHORT);
                     toast.show();
+                    getContenido(position);
 
                 //Refresco esta pantalla con la lista de los contenidos
                 }else{
@@ -136,7 +137,7 @@ public class ContenidoActivity extends Activity implements OnClickListener {
 
                     animacion = false;
 
-                    //Si la respuesta del Servlet fue 404
+                    //Si la respuesta del Servlet que lista las subcategorias fue 404
                     try{
                         if(Singleton.getInstancia().getContenidos().isEmpty()){
                             Intent intent = new Intent(ContenidoActivity.this, ContenidoActivity.class);

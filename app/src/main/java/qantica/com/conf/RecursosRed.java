@@ -12,6 +12,9 @@ public class RecursosRed {
     //Servlet que contiene la funcionalidad del Login
     public static String URL_LOGIN = DOMINIO + "ServletLogin";
 
+    //Servlet que iserta el ingreso del usuario
+    public static String URL_INGRESO = DOMINIO + "ServletAcceso";
+
     //Servlet que contiene la funcionalidad para listar Noticias
     public static String URL_NOTICIA = DOMINIO + "ServletNoticias";
 

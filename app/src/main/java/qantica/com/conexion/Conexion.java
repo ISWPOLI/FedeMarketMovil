@@ -41,6 +41,14 @@ public class Conexion {
         }
     }
 
+    public static void insertarIngreso(ArrayList<NameValuePair> getParameters){
+        try{
+            Ejecucion.executeIngreso(getParameters);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Lista las noticias
      * @param postParameters parámetros que se pasaran por url
