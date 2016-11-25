@@ -10,7 +10,9 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -110,9 +112,9 @@ public class Login extends Activity implements View.OnClickListener {
      * Verifica si existe las carpetas
      */
     private void crearCarpeta() {
-        File arc = new File("sdcard/Qantica Market");
-        if (!arc.isDirectory()) {
-            arc.mkdirs();
+        File carpeta = new File(Environment.getExternalStorageDirectory()+"/fedemarket");
+        if(!carpeta.exists()) {
+            carpeta.mkdir();
         }
     }
 
@@ -211,11 +213,14 @@ public class Login extends Activity implements View.OnClickListener {
                             Singleton.getInstancia().limpiar();
                             ArrayList<NameValuePair> paramLogin = new ArrayList<NameValuePair>();
                             ArrayList<NameValuePair> paramNoticias = new ArrayList<NameValuePair>();
+                            ArrayList<NameValuePair> paramIngreso = new ArrayList<NameValuePair>();
                             paramLogin.add(new BasicNameValuePair("nombre_usuario",nombreUsuario.getText().toString()));
                             paramLogin.add(new BasicNameValuePair("contrasena",contrasena.getText().toString()));
                             Log.e("QANTICAMARKET", "Se intentará conectar a: "+ RecursosRed.DOMINIO);
                             if (Conexion.verificarLogin(paramLogin)) {
+                                paramIngreso.add(new BasicNameValuePair("idusuario", Singleton.getInstancia().getUid()));
                                 paramNoticias.add(new BasicNameValuePair("rol", Singleton.getInstancia().getRol()));
+                                Conexion.insertarIngreso(paramIngreso);
                                 Conexion.listarNoticias(paramNoticias);
                                 Conexion.listarCategorias(Login.this, paramNoticias);
                                 //Conexion.listarSubCategorias(Login.this, paramNoticias);

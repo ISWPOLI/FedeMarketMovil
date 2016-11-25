@@ -42,6 +42,8 @@ public class ProcesoRespuesta {
         return true;
     }
 
+
+
     /**
      * Método que procesa el resultado del Servlet y asigna al Singleton
      * los atributos
