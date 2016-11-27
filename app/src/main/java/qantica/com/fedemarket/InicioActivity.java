@@ -126,11 +126,11 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
                         intent.putExtra("categoria2",categoria.getNombre());
                         intent.putExtra("idCategoria",categoria.getId());
                         startActivity(intent);
-                        Toast toast = Toast.makeText(InicioActivity.this,"No hay subcategorias... vacio!",Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(InicioActivity.this,"No hay subcategorias... vacio!",Toast.LENGTH_SHORT);
+                        //toast.show();
                     }else{
-                        Toast toast = Toast.makeText(InicioActivity.this,"Si hay subcategorias!", Toast.LENGTH_SHORT);
-                        toast.show();
+                        //Toast toast = Toast.makeText(InicioActivity.this,"Si hay subcategorias!", Toast.LENGTH_SHORT);
+                        //toast.show();
                         Intent intent = new Intent(InicioActivity.this,ContenidoActivity.class);
                         Singleton.getInstancia().setCid(Integer.parseInt(idItem));
                         intent.putExtra("categoria", categoria.getNombre());
@@ -139,8 +139,8 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
                     }
                 }catch (Exception e){
                     e.printStackTrace();
-                    Toast toast = Toast.makeText(InicioActivity.this,"EXCEPCIÓN!",Toast.LENGTH_SHORT);
-                    toast.show();
+                    //Toast toast = Toast.makeText(InicioActivity.this,"EXCEPCIÓN!",Toast.LENGTH_SHORT);
+                    //toast.show();
                 }
 
             }
@@ -269,10 +269,11 @@ public class InicioActivity extends Activity implements	ViewPager.OnPageChangeLi
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            Singleton.getInstancia().limpiar();
+            Singleton.getInstancia().limpiarNoticias();
             Singleton.getInstancia().setAnimacion(false);
             Intent intent = new Intent(InicioActivity.this, Login.class);
             startActivity(intent);
+
             /*ArrayList<Activity> actividades = SingletonActividad.getInstancia().getActividades();
             SingletonActividad.getInstancia().setActividades(new ArrayList<Activity>());
             for (int i = 0; i < actividades.size(); i++) {

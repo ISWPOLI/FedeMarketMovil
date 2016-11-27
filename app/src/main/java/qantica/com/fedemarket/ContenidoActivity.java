@@ -143,11 +143,11 @@ public class ContenidoActivity extends Activity implements OnClickListener {
                             Intent intent = new Intent(ContenidoActivity.this, ContenidoActivity.class);
                             intent.putExtra("categoria",datos.getString("categoria"));
                             startActivity(intent);
-                            Toast toast = Toast.makeText(ContenidoActivity.this,"No hay contenido",Toast.LENGTH_SHORT);
-                            toast.show();
+                           // Toast toast = Toast.makeText(ContenidoActivity.this,"No hay contenido",Toast.LENGTH_SHORT);
+                            //toast.show();
                         }else{
-                            Toast toast = Toast.makeText(ContenidoActivity.this,"Si hay contenido", Toast.LENGTH_SHORT);
-                            toast.show();
+                            //Toast toast = Toast.makeText(ContenidoActivity.this,"Si hay contenido", Toast.LENGTH_SHORT);
+                            //toast.show();
 
                             Conexion.listarContenido(ContenidoActivity.this,param);
 
@@ -159,8 +159,8 @@ public class ContenidoActivity extends Activity implements OnClickListener {
                         /*Intent intent = new Intent(InicioActivity.this, ContenidoActivity.class);
                         intent.putExtra("categoria","No hay subcategorias");
                         startActivity(intent);
-                        Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
-                        toast.show();*/
+                        //Toast toast = Toast.makeText(InicioActivity.this,"Vacio",Toast.LENGTH_SHORT);
+                        //toast.show();*/
                         e.printStackTrace();
                     }
 

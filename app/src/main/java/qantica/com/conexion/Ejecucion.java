@@ -268,6 +268,7 @@ public class Ejecucion {
             StringBuffer sb = new StringBuffer("");
             String line = "";
             String NL = System.getProperty("line.separator");
+
             while ((line = in.readLine()) != null) {
                 sb.append(line + NL);
             }
