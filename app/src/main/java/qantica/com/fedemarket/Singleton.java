@@ -102,6 +102,10 @@ public class Singleton {
         subcategorias = new ArrayList<SubCategoria>();
     }
 
+    public static void limpiarNoticias(){
+        noticias = new ArrayList<Noticia>();
+    }
+
     //GETTERS AND SETTERS
 
     public static ArrayList<Object> getResultados() {

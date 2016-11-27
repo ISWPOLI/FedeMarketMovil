@@ -120,21 +120,21 @@
                             android:id="@+id/AbsoluteLayout1"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
-                            android:gravity="bottom" >
+                            android:gravity="bottom">
 
                             <LinearLayout
                                 android:id="@+id/img_descarga"
-                                android:layout_width="109dp"
-                                android:layout_height="150dp"
-                                android:gravity="bottom|top"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
                                 android:orientation="vertical" >
                             </LinearLayout>
 
                             <ImageView
                                 android:id="@+id/ico_update"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ico_update" />
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/ic_launcher" />
                         </AbsoluteLayout>
                     </LinearLayout>
 
@@ -302,6 +302,14 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/img_separador_" />
 
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.02"
+                            android:src="@drawable/img_separador_" />
+
                         <HorizontalScrollView
                             android:id="@+id/horizontalScrollView1"
                             android:layout_width="wrap_content"
@@ -315,13 +323,6 @@
                             </LinearLayout>
                         </HorizontalScrollView>
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_weight="0.02"
-                            android:src="@drawable/img_separador_" />
                     </LinearLayout>
 
                     <LinearLayout
